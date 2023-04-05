@@ -10,6 +10,7 @@ Line::Line(std::vector<double> a, std::vector<Ingrediant> l) {
 }
 
 std::ostream& operator<<(std::ostream& output, Line const& line) {
+    /*
     output << "[";
     for (int i = 0; i < line.amount.size(); i++) {
         output << line.amount[i];
@@ -18,10 +19,11 @@ std::ostream& operator<<(std::ostream& output, Line const& line) {
         }
     }
     output << "]\n";
+    */
 
     output << "[";
     for (int i = 0; i < line.line.size(); i++) {
-        output << line.line[i].getName();
+        output << line.line[i].getName() << ": " << line.amount[i];
         if (i != line.line.size() - 1) {
             output << ", ";
         }
