@@ -4,12 +4,13 @@ Ingrediant::Ingrediant() {
     
 }
 
-Ingrediant::Ingrediant(std::string n, double p, bool g, double ct, bool e) {
+Ingrediant::Ingrediant(std::string n, double p, bool g, double ct, bool e, std::string t) {
     name = n;
     precedence = p;
     grillable = g;
     cooktime = ct;
     edible = e;
+    type = t;
 }
 
 std::ostream& operator<<(std::ostream& output, Ingrediant const& ingrediant) {
@@ -18,6 +19,7 @@ std::ostream& operator<<(std::ostream& output, Ingrediant const& ingrediant) {
     output << "Grillable: " << ingrediant.grillable << std::endl;
     output << "Cook Time: " << ingrediant.cooktime << std::endl;
     output << "Edible: " << ingrediant.edible << std::endl;
+    output << "Type: " << ingrediant.type << std::endl;
     return output;
 }
 
@@ -41,6 +43,10 @@ bool Ingrediant::getEdible() const {
     return edible;
 }
 
+std::string Ingrediant::getType() const {
+    return type;
+}
+
 void Ingrediant::setName(std::string n) {
     name = n;
 }
@@ -59,4 +65,8 @@ void Ingrediant::setCooktime(double ct) {
 
 void Ingrediant::setEdible(bool e) {
     edible = e;
+}
+
+void Ingrediant::setType(std::string t) {
+    type = t;
 }

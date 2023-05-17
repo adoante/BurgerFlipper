@@ -22,10 +22,11 @@ class Ingrediant {
         bool grillable;
         double cooktime;
         bool edible;
+        std::string type;
     public:
         //Constructors
         Ingrediant();
-        Ingrediant(std::string name, double precedence, bool grillable, double cooktime, bool edible);
+        Ingrediant(std::string name, double precedence, bool grillable, double cooktime, bool edible, std::string type);
 
         //Overloads
         friend std::ostream& operator<<(std::ostream&, Ingrediant const&);
@@ -36,7 +37,9 @@ class Ingrediant {
         bool getGrillable() const;
         double getCooktime() const;
         bool getEdible() const;
+        std::string getType() const;
         //Setter
+        void setType(std::string);
         void setName(std::string);
         void setPrecedence(double);
         void setGrillable(bool);
