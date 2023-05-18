@@ -2,6 +2,7 @@
 #include <stack>
 #include "Ingrediant.h"
 #include "Line.h"
+#include "Ticket.h"
 
 int main() {
     
@@ -53,58 +54,12 @@ int main() {
         Ingrediant slider_bun_crown = Ingrediant("Slider Bun Crown", 0.84, true, 3.0, true, "Bun Crown");
         Ingrediant sourdough_crown = Ingrediant("Sourdough Bun Crown", 0.85, true, 3.0, true, "Bun Crown");
 
-    std::vector<Ingrediant> ingrediants = { };
-    std::vector<double> amounts = {100, 100, 100, 100, 100, 100, 100};
+    std::vector<Ingrediant> ingrediants = { white_bun_heel, wheat_bun_heel, gluten_free_bun_heel, junior_bun_heel, slider_bun_heel, sourdough_heel, thousand_island, mustard, mayo, ketchup, huli, spicy_mayo, garlic_aioli, blue_cheese_sauce, lettuce, onion, tomato, pickel, burger_patty, kilauea_patty, turkey_patty, crispy_chicken, grilled_chicken, slider_patty, junior_patty, tuna, chedder, swiss, american, white_chedder, pepper_jack, mixed_chedder_jack, egg, bacon, jalapeno, pineapple, avocado, grilled_onions, grilled_mushrooms, chilli, island_reds, white_bun_crown, wheat_bun_crown, gluten_free_bun_crown, junior_bun_crown, slider_bun_crown, sourdough_crown };
+    std::vector<double> amounts = {100, 100, 100, 100, 100,100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100};
+
     Line grill_line = Line(amounts, ingrediants);
+    Ticket tickets = Ticket();
+    std::vector<Ingrediant> temp = tickets.generateTicket(ingrediants);
+    tickets.printTicket(temp);
 
-    // Quick and Ugly burger build implamentation REFACTOR
-    
-    std::stack<Ingrediant> build;
-
-    std::cout << "type 'add' then hit enter and type 'name of ingrediant' to add it to the burger build" << std::endl;
-    std::cout << "works like a stack bottom -> up" << std::endl;
-
-    std::string cmd_input = "";
-    std::string ingrediant_input = "";
-
-    while (true) {
-    std::cout << "Command: ";
-    std::getline(std::cin, cmd_input);
-
-        if (cmd_input == "quit") {
-            break;
-        }
-
-        if (cmd_input == "trash") {
-            while (build.size() > 0) {
-                build.pop();
-            }
-        }
-
-    std::cout << "Ingrediant: ";
-    std::getline(std::cin, ingrediant_input);
-
-    if (cmd_input == "add") {
-      //check if ingrediant is on the line
-      //if so remove 1 from the line amounts
-      for (int i = 0; i < grill_line.getLine().size(); i++) {
-          if (ingrediant_input == grill_line.getLine()[i].getName()) {
-              std::vector<double> tmp_amounts = amounts;
-              tmp_amounts[i] = tmp_amounts[i] - 1;
-              grill_line.setAmount(tmp_amounts);
-              build.push(grill_line.getLine()[i]);
-          }
-      } 
-    }
-
-    }
-    if (cmd_input == "quit") { 
-        std::cout << "``````````Build``````````" << std::endl;
-        while (build.size() > 0) {
-            std::cout << build.top().getName() << std::endl;
-            build.pop();
-        }
-    }
-
-    return 0;
 }

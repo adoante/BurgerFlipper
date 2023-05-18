@@ -13,22 +13,16 @@
 
 class Ticket {
     private:
-        std::vector<Ingrediant> ingrediants;
-        bool isNormal;
+
     public:
         //Constructors
         Ticket();
-        Ticket(std::vector<Ingrediant>, bool);        
         //Overloads
         
         //Getters
-        std::vector<Ingrediant> getIngrediants() const;
-        bool getIsNormal() const;
         //Setter
-        void setIngrediants(std::vector<Ingrediant>);
-        void setIsNormal(bool);
         //Functions
-        std::vector<Ingrediant> generateTicket();
+        std::vector<Ingrediant> generateTicket(std::vector<Ingrediant>);
         void printTicket(std::vector<Ingrediant>);
 };
 

@@ -1,40 +1,34 @@
 #include "Ticket.h"
+#include "Ingrediant.h"
+#include <cstdlib>
+#include <time.h>
+#include <vector>
 
 Ticket::Ticket() {
-    std::vector<Ingrediant> ingrediants = {};                                                                                                                         
-    bool isNormal = true;
+
 }
 
-Ticket::Ticket(std::vector<Ingrediant> i, bool n) {
-    std::vector<Ingrediant> ingrediants = i;
-    bool isNormal = n;
-}
-
-std::vector<Ingrediant> Ticket::getIngrediants() const {
-    return ingrediants;
-}
-
-bool Ticket::getIsNormal() const {
-    return isNormal;
-}
-
-void setIngrediants(std::vector<Ingrediant> i) {
-    std::vector<Ingrediant> ingrediants = i;
-}
-
-void setIsNormal(bool n) {
-    bool isNormal = n;
-}
-
-std::vector<Ingrediant> generateTicket(std::vector<Ingrediant> ingrediant) {
+/*
+ *  Function takes a vector of ingrediants and generate a random burger order
+ *  Every burger has at least a single patty, nothing else required
+ *  
+ */
+std::vector<Ingrediant> Ticket::generateTicket(std::vector<Ingrediant> ingrediants) {
     std::vector<Ingrediant> temp;
+    std::srand(time(0));
 
-    
-
+    for (int i = 0; i < (rand() % 19) + 1; i++) {
+        int random_ingrediant = rand() % ingrediants.size();
+        temp.push_back(ingrediants[random_ingrediant]);
+    }
     return temp;
-    
 }
 
-void printTicket(std::vector<Ingrediant> i) {
-    std::cout << "Test String" << std::endl;
+void Ticket::printTicket(std::vector<Ingrediant> ingrediant) {
+    std::cout << "*****************************" << std::endl;
+    std::cout << "Table: " << (rand() % 400) + 12 << std::endl;
+    for (int i = 0; i < ingrediant.size(); i++) {
+        std::cout << ingrediant[i].getName() << std::endl;
+    } 
+    std::cout << "*****************************" << std::endl;
 }
